@@ -10,7 +10,7 @@ import smtplib
 from email.message import EmailMessage
 import traceback
 import os
-import schedule
+
 import time
 
 
