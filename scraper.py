@@ -33,7 +33,7 @@ def scrape():
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--window-size=400x1500")
         chrome_options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36')
-        driver = webdriver.Chrome(executable_path="/Users/main/desktop/code/dare/scraping/chromedriver_PATH_for_selenium_ref/chromedriver", options=chrome_options)
+        driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
         
         url = "https://www.apple.com/ca/shop/buy-iphone/iphone-14-pro/6.7-inch-display-128gb-space-black"
         driver.get(url)
