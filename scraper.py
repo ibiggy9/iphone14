@@ -29,6 +29,7 @@ def scrape():
     try:
         chrome_options = webdriver.ChromeOptions()
         chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+        #fsf
         #chrome_options.add_argument("--disable-dev-shm-usage")
         #chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--headless")
