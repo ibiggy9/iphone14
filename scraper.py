@@ -41,7 +41,7 @@ def scrape():
         url = "https://www.apple.com/ca/shop/buy-iphone/iphone-14-pro/6.7-inch-display-128gb-space-black"
         driver.get(url)
         time.sleep(5)
-        tradeinTest = driver.find_element_by_id("noTradeIn_label").click()
+        tradeinTest = driver.find_element(By.ID,"noTradeIn_label").click()
         
         '''
         tradein = WebDriverWait(driver, 10).until(
@@ -50,20 +50,20 @@ def scrape():
         tradein.click()
         '''
         driver.get_screenshot_as_file("shoot.png") 
-        applecareTest = driver.find_element_by_id("applecareplus_59_noapplecare_label").click()
+        applecareTest = driver.find_element(By.ID, "applecareplus_59_noapplecare_label").click()
 
         time.sleep(3)
-        availability = driver.find_element_by_css_selector("#root > div.rf-bfe > div.rf-bfe-selectionarea > div.rf-bfe-summary-wrapper > div > div > div > div > div > div.rf-bfe-summary-grid > div > div > div > div:nth-child(1) > div > div:nth-child(2) > div > div > button").click()
+        availability = driver.find_element(By.CSS_SELECTOR, "#root > div.rf-bfe > div.rf-bfe-selectionarea > div.rf-bfe-summary-wrapper > div > div > div > div > div > div.rf-bfe-summary-grid > div > div > div > div:nth-child(1) > div > div:nth-child(2) > div > div > button").click()
         
         
         time.sleep(3)
-        postcode = driver.find_element_by_css_selector('.rf-productlocator-form-textinput').send_keys("N2L0E3")
+        postcode = driver.find_element(By.CSS_SELECTOR,'.rf-productlocator-form-textinput').send_keys("N2L0E3")
         
-        driver.find_element_by_css_selector(".rf-productlocator-form-textinput").send_keys(Keys.RETURN)
+        driver.find_element(By.CSS_SELECTOR,".rf-productlocator-form-textinput").send_keys(Keys.RETURN)
 
         time.sleep(3)
         try:
-            status = driver.find_element_by_css_selector('.rf-productlocator-suggestions')
+            status = driver.find_element(By.CSS_SELECTOR,'.rf-productlocator-suggestions')
 
             sendNote("ibigford9@gmail.com", status.text, )
 
