@@ -74,7 +74,8 @@ def scrape():
                 print("False")
                 sendNote("ibigford9@gmail.com", status.text, "Get After it son!")
         except:
-            sendNote("ibigford9@gmail.com", "error", "Error")
+            error = traceback.print_exc()
+            sendNote("ibigford9@gmail.com", error, "Error")
             pass
 
     except:
