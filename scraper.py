@@ -65,7 +65,7 @@ def scrape():
         try:
             status = driver.find_element(By.CSS_SELECTOR,'.rf-productlocator-suggestions')
 
-            sendNote("ibigford9@gmail.com", status.text, )
+            
 
             if "No iPhone 14 Pro Max models are" in status.text:
                 print(True)
