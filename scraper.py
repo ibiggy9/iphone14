@@ -53,31 +53,18 @@ def scrape():
         applecareTest = driver.find_element(By.ID, "applecareplus_59_noapplecare_label").click()
 
         time.sleep(3)
-        availability = driver.find_element(By.CSS_SELECTOR, "#root > div.rf-bfe > div.rf-bfe-selectionarea > div.rf-bfe-summary-wrapper > div > div > div > div > div > div.rf-bfe-summary-grid > div > div > div > div:nth-child(1) > div > div:nth-child(2) > div > div > button").click()
-        
-        
-        time.sleep(3)
-        postcode = driver.find_element(By.CSS_SELECTOR,'.rf-productlocator-form-textinput').send_keys("N2L0E3")
-        
-        driver.find_element(By.CSS_SELECTOR,".rf-productlocator-form-textinput").send_keys(Keys.RETURN)
-
-        time.sleep(3)
         try:
-            status = driver.find_element(By.CSS_SELECTOR,'.rf-productlocator-suggestions')
+            checkOn = driver.find_element(By.CSS_SELECTOR, ".rf-pickup-quote-value")
+            sendNote("ibigford9@gmail.com", checkOn, "No Change Yet!")
 
-            
-
-            if "No iPhone 14 Pro Max models are" in status.text:
-                print(True)
-                sendNote("ibigford9@gmail.com", status.text, "Nothing")
-            else:
-                print("False")
-                sendNote("ibigford9@gmail.com", status.text, "Get After it son!")
         except:
             error = traceback.print_exc()
             sendNote("ibigford9@gmail.com", error, "Error")
             pass
+            
 
+        time.sleep(3)
+    
     except:
         traceback.print_exc()
 
