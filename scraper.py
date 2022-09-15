@@ -59,6 +59,7 @@ def scrape():
 
         time.sleep(3)
         try:
+            print(count)
             checkOn = driver.find_element(By.CSS_SELECTOR, ".rf-pickup-quote-value")
             print(checkOn.text)
             if checkOn.text == 'Check availability from 16/09':
