@@ -1,3 +1,4 @@
+from urllib import response
 from selenium import webdriver
 from selenium.webdriver.common import keys
 from selenium.webdriver.common.action_chains import ActionChains
@@ -18,12 +19,16 @@ import time
 
 global file_path
 global file_path2
+count = 0
+responses = []
 
 def scrape():
+    
 
     Sender_Email = "ibigford9@gmail.com"
     Reciever_Email = "ibigford9@gmail.com"
     Password = 'mbzrbrosqpxdaxeg'
+    
     
     
     try:
@@ -56,7 +61,14 @@ def scrape():
         try:
             checkOn = driver.find_element(By.CSS_SELECTOR, ".rf-pickup-quote-value")
             print(checkOn.text)
-            sendNote("ibigford9@gmail.com", checkOn.text, "No Change Yet!")
+            if checkOn.text == 'Check availability from 16/09':
+                count + 1
+            
+            else:
+                sendNote("ibigford9@gmail.com", "Check the website now", "Check the website now!")
+            
+            if count%1000 == 0:
+                sendNote("ibigford9@gmail.com", checkOn.text, "No Change Yet!")
 
         except:
             error = traceback.print_exc()
@@ -99,4 +111,4 @@ def sendNote(recipients, content, subject):
 
 while True:
     scrape()
-    time.sleep(30)
+    time.sleep(10)
