@@ -55,6 +55,7 @@ def scrape():
         time.sleep(3)
         try:
             checkOn = driver.find_element(By.CSS_SELECTOR, ".rf-pickup-quote-value")
+            print(checkOn)
             sendNote("ibigford9@gmail.com", checkOn, "No Change Yet!")
 
         except:
