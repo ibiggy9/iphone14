@@ -15,10 +15,11 @@ import os
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 import time
+import imghd
 
 
-global file_path
-global file_path2
+file_path = "/app/shoot.png"
+
 count = 0
 responses = []
 
@@ -61,12 +62,14 @@ def scrape():
         try:
             print(count)
             checkOn = driver.find_element(By.CSS_SELECTOR, ".rf-pickup-quote-value")
+            driver.get_screenshot_as_file("/app/shoot.png")
             print(checkOn.text)
             if checkOn.text == 'Check availability from 16/09':
                 count + 1
             
             else:
                 sendNote("ibigford9@gmail.com", "Check the website now", "Check the website now!")
+                
             
             if count%1000 == 0:
                 sendNote("ibigford9@gmail.com", checkOn.text, "No Change Yet!")
@@ -91,13 +94,19 @@ def sendNote(recipients, content, subject):
     print(recipients)
     password = 'nysmhzdxjcflnwju'
     Sender_Email = 'darepfapp@gmail.com'
+    
     try:
         newMessage = EmailMessage()                         
         newMessage['Subject'] = subject
         newMessage['From'] = Sender_Email                   
         newMessage['To'] = recipients                  
         newMessage.set_content(content) 
-        
+        with open(file_path, 'rb') as f:
+            image_data = f.read()
+            image_type = imghdr.what(f.name)
+            image_name = f.name
+        newMessage.add_attachment(image_data, maintype='image', subtype=image_type, filename=image_name)
+
 
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
             smtp.ehlo()
