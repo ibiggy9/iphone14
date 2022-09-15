@@ -15,7 +15,7 @@ import os
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 import time
-import imghd
+import imghdr
 
 
 file_path = "/app/shoot.png"
