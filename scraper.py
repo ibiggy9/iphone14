@@ -121,4 +121,4 @@ def sendNote(recipients, content, subject):
 
 while True:
     scrape()
-    time.sleep(600)
+    time.sleep(300)
