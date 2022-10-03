@@ -17,21 +17,20 @@ from selenium.webdriver.chrome.service import Service
 import time
 import imghdr
 
-
+#Where I store the screen shot that will be attached in the email
 file_path = "/app/shoot.png"
 
 count = 0
 responses = []
 
+#Main Scraping function
 def scrape():
-    
-
-    Sender_Email = "ibigford9@gmail.com"
-    Reciever_Email = "ibigford9@gmail.com"
-    Password = 'mbzrbrosqpxdaxeg'
+    Sender_Email = "myemail"
+    Reciever_Email = "myemail"
+    Password = 'myapppassword'
     
     
-    
+    # Convention for running selenium buildpack on Heroku
     try:
         chrome_options = webdriver.ChromeOptions()
         chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -68,15 +67,15 @@ def scrape():
                 count + 1
             
             else:
-                sendNote("ibigford9@gmail.com", "Check the website now", "Check the website now!")
+                sendNote("myemail", "Check the website now", "Check the website now!")
                 
             
             if count%1000 == 0:
-                sendNote("ibigford9@gmail.com", checkOn.text, "No Change Yet!")
+                sendNote("myemail", checkOn.text, "No Change Yet!")
 
         except:
             error = traceback.print_exc()
-            sendNote("ibigford9@gmail.com", error, "Error")
+            sendNote("myemail", error, "Error")
             pass
             
 
@@ -119,6 +118,7 @@ def sendNote(recipients, content, subject):
     except:
         traceback.print_exc()
 
+# run every 300 seconds
 while True:
     scrape()
     time.sleep(300)
